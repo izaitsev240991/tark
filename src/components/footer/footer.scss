@@ -1,0 +1,505 @@
+@use '@/assets/styles/mixin.scss' as * ;
+@use "sass:list";
+
+$link: tg, vk, yt, vc, ok, dz, ru;
+
+
+.footer {
+  padding: 4rem 0 3rem;
+  @include wideBg(var(--accent));
+  color: var(--white);
+  @media (min-width: $tab) {
+    padding: 6rem 0 3rem;
+  }
+  @media (min-width: $desk) {
+    padding: 10rem 0 3rem;
+    display: grid;
+    grid-template-columns: 1fr 85rem 1fr;
+    grid-template-areas: "f1 f2 f3" "f4 f4 f4";
+  }
+
+  &__logo {
+    display: none;
+    margin: 0 0 4rem;
+    grid-area: f1;
+    @media (min-width: $tab) {
+      display: inline-block;
+    }
+  }
+
+  &__form {
+    grid-area: f2;
+
+    &-title {
+      margin: 0 0 1rem;
+      font-size: 2.4rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 116%;
+      text-transform: uppercase;
+      @media (min-width: $tab) {
+        font-size: 3.4rem;
+      }
+      @media (min-width: $desk) {
+        font-size: 4rem;
+      }
+    }
+
+    &-subtitle {
+      font-size: 1.8rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      margin: 0 0 2.5rem;
+      @media (min-width: $tab) {
+        font-size: 2.4rem;
+        margin: 0 0 4rem;
+      }
+
+    }
+    &-loader{
+      position: relative;
+      &:before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+        z-index: 20;
+        background: var(--accent);
+        opacity: 90%;
+      }
+      &__icon{
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 5rem;
+        height: 5rem;
+        z-index: 22;
+        rect:nth-child(3){
+          animation: load .2s ease-in-out infinite;
+        }
+        rect:nth-child(5){
+          animation: load .2s ease-in-out .2s infinite;
+        }
+        rect:nth-child(7){
+          animation: load .2s ease-in-out .4s infinite;
+        }
+        rect:nth-child(2){
+          animation: load .2s ease-in-out .6s infinite;
+        }
+        rect:nth-child(9){
+          animation: load .2s ease-in-out .8s infinite;
+        }
+        rect:nth-child(11){
+          animation: load .2s ease-in-out 1s infinite;
+        }
+        rect:nth-child(4){
+          animation: load .2s ease-in-out 1.2s infinite;
+        }
+        rect:nth-child(6){
+          animation: load .2s ease-in-out 1.4s infinite;
+        }
+        rect:nth-child(8){
+          animation: load .2s ease-in-out 1.4s infinite;
+        }
+        rect:nth-child(7){
+          animation: load .2s ease-in-out 1.6s infinite;
+        }
+        rect:nth-child(1){
+          animation: load .2s ease-in-out 1.8s infinite;
+        }
+        rect:nth-child(10){
+          animation: load .2s ease-in-out 2s infinite;
+        }
+        rect:nth-child(12){
+          animation: load .2s ease-in-out 2.2s infinite;
+        }
+        @keyframes load {
+          0% { fill: var(--accent); }
+          50% { fill: var(--white); }
+          100% { fill:var(--white) }
+        }
+
+
+      }
+    }
+&-thx{
+  text-align: center;
+  margin: 0 auto;
+  align-self: center;
+  button{
+    margin: 2.5rem 0 4rem;
+    color: var(--accent);
+    background: var(--white);
+    height: 4.4rem;
+    font-size: 1.6rem;
+    width: 100%;
+    font-weight: 600;
+    text-transform: uppercase;
+    outline: none;
+    border: 1px solid var(--white);
+    cursor: pointer;
+    border-radius: .2rem;
+    @include transition;
+
+    &:hover {
+      color: var(--white);
+      background: var(--accent);
+    }
+
+    @media (min-width: $tab) {
+      margin: 3rem 0 4rem;
+      font-size: 1.8rem;
+      height: 4.6rem;
+    }
+    @media (min-width: $desk) {
+      margin: 3rem 0 5rem;
+    }
+  }
+  @media (min-width: $tab) {
+    max-width: 46rem;
+
+  }
+  @media (min-width: $desk) {
+    max-width: 40rem;
+  }
+  img{
+    width: 5rem;
+    margin: 0 0 2.5rem;
+    @media (min-width: $tab) {
+      width: 8.2rem;
+      margin: 0 0 4rem;
+    }
+
+  }
+}
+  }
+
+
+  &__agree {
+    padding: 0 0 0 3rem;
+    position: relative;
+    input {
+      display: none;
+    }
+    &-check {
+      width: 2rem;
+      height: 2rem;
+      box-sizing: border-box;
+      border: 1px solid var(--white);
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+      border-radius: .2rem;
+      @include transition;
+      &:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 1.8rem;
+        height: 1.8rem;
+        background: url("./img/check.svg") no-repeat center center;
+        opacity: 0;
+        @include transition;
+      }
+    }
+    input:checked + .footer__agree-check {
+
+      &:before {
+        opacity: 1;
+      }
+    }
+
+    div,a {
+      font-size: 1.4rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--grey-light);
+      @include transition;
+      span{
+        font-weight: 400;
+      }
+    }
+    a:hover {
+      color: var(--white);
+    }
+    .error-message{
+      @media (min-width: $tab) {
+        top: 150% !important;
+
+      }
+    }
+  }
+
+  &__socials {
+    grid-area: f3;
+    display: flex;
+    gap: 1rem;
+    align-self: stretch;
+    justify-content: space-between;
+    margin: 0 0 4rem;
+    @media (min-width: $tab) {
+      margin: 0 0 4.5rem;
+      gap: 1.5rem;
+      justify-content: normal;
+    }
+    @media (min-width: $desk) {
+      margin: 0;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    a {
+      width: 4.4rem;
+      height: 4.4rem;
+      border: 1px solid white;
+      position: relative;
+      border-radius: 50%;
+      background: var(--white);
+      @include transition;
+
+      &:hover {
+        background: var(--accent);
+
+        &:before {
+          background: var(--white);
+        }
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 2.6rem;
+        height: 2.6rem;
+        background: var(--accent);
+      }
+
+      @media (min-width: $tab) {
+        width: 4.6rem;
+        height: 4.6rem;
+      }
+    }
+
+    @for $i from 1 through list.length($link) {
+      a:nth-child(#{$i}):before {
+        @include mask(list.nth($link, $i));
+      }
+    }
+  }
+
+  &__info {
+    grid-area: f4;
+    color: var(--white);
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    @media (min-width: $tab) {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-links {
+      display: flex;
+      flex-direction: column;
+      margin: 0 0 1.5rem;
+      gap: .5rem;
+
+      a {
+        @extend .footer__info;
+        text-decoration: none;
+        font-weight: 500;
+        @include transition;
+
+        &:hover {
+          color: var(--grey);
+        }
+
+      }
+
+      @media (min-width: $tab) {
+        gap: 1rem;
+        margin: 0;
+      }
+    }
+
+    &-copyright {
+      @media (min-width: $tab) {
+        align-self: flex-end;
+      }
+    }
+  }
+
+  &__forms {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+          "a1"
+          "a2"
+          "a3"
+          "a4"
+          "a5"
+          "a6";
+
+    @media (min-width: $tab) {
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: 2rem;
+      grid-row-gap: 1.5rem;
+      grid-template-areas:
+          "a1 a2"
+          "a3 a3"
+          "a4 a4"
+          "a5 a5"
+          "a6 a6";
+    }
+
+    & input, textarea {
+      border-radius: .2rem;
+      border: 1px solid var(--white);
+      padding: 1.6rem 1rem 1.6rem 1.2rem;
+      box-sizing: border-box;
+      width: 100%;
+      background: var(--grey);
+      position: relative;
+      @include transition;
+
+      &:focus {
+        outline: none;
+        border: 1px solid var(--accent);
+        background: var(--grey-light);
+        color: var(--dark);
+        font-size: 1.4rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+
+        & + span {
+          top: .3rem;
+          font-size: 1rem;
+          line-height: 130%;
+          @media (min-width: $tab) {
+            font-size: 1.3rem;
+          }
+        }
+      }
+    }
+& textarea{
+  height: 16rem;
+}
+    & label:nth-child(1) {
+      grid-area: a1;
+
+    }
+
+    & label:nth-child(2) {
+      grid-area: a2;
+    }
+
+    & label:nth-child(3) {
+      grid-area: a3;
+    }
+
+    & label:nth-child(4) {
+      grid-area: a4;
+    }
+
+    & label:nth-child(5) {
+      grid-area: a5;
+    }
+
+    & button {
+      grid-area: a6;
+    }
+
+    & label {
+      position: relative;
+
+      & + label {
+        margin: 1.5rem 0 0;
+        @media (min-width: $tab) {
+          margin: 0;
+        }
+      }
+    }
+
+    & .form__label span {
+      position: absolute;
+      left: 1.2rem;
+      top: 1.6rem;
+      color: var(--dark);
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 400;
+      z-index: 1;
+      @include transition;
+      @media (min-width: $tab) {
+        font-size: 1.8rem;
+      }
+
+      &.hidden {
+        opacity: 0;
+        visibility: hidden;
+
+
+      }
+
+    }
+
+    button {
+      margin: 2.5rem 0 4rem;
+      color: var(--accent);
+      background: var(--white);
+      height: 4.4rem;
+      font-size: 1.6rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      outline: none;
+      border: 1px solid var(--white);
+      cursor: pointer;
+      border-radius: .2rem;
+      @include transition;
+
+      &:hover {
+        color: var(--white);
+        background: var(--accent);
+      }
+
+      @media (min-width: $tab) {
+        margin: 3rem 0 4rem;
+        font-size: 1.8rem;
+        height: 4.6rem;
+      }
+      @media (min-width: $desk) {
+        margin: 3rem 0 5rem;
+      }
+
+    }
+
+    .error {
+      border: 1px solid var(--err);
+      background: var(--white);
+    }
+
+    .error-message {
+      color: var(--err);
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      position: absolute;
+      top: 100%;
+      left: 0;
+    }
+  }
+}

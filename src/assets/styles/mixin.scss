@@ -1,0 +1,31 @@
+$tab: 768px;
+$desk: 1200px;
+$mDesk: 1760px;
+$fhd: 1920px;
+$mob-max: $tab - 1px;
+$tab-max: $desk - 1px;
+
+@mixin wideBg($color){
+  position: relative;
+  &:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 100vw;
+    margin-left: -50vw;
+    background: $color;
+    z-index: -1;
+  }
+}
+@mixin mask($url,$size: 100%, $pos: center center, $path: './img/', $format: 'svg', $repeat: no-repeat){
+  mask: url(#{$path}#{$url}.#{$format}) $pos / $size $repeat;
+  -webkit-mask: url(#{$path}#{$url}.#{$format}) $pos / $size $repeat;
+}
+@mixin transition{
+  -webkit-transition: all  ease-in-out 0.3s;
+  -moz-transition: all  ease-in-out 0.3s;
+  -o-transition: all  ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+}

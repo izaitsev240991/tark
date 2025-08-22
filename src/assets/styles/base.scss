@@ -1,0 +1,71 @@
+@use '@/assets/styles/mixin.scss' as * ;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+  --dark: #20467E;
+  --white: #ffffff;
+  --accent: #024DC4;
+  --blue-l: #3A547C;
+  --grey:#D1DEF3;
+  --grey-light:#DEE4EE;
+  --grey-blue:#7990B2;
+  --err:#FF313D;
+  --bg:#FCFEFF;
+  --bg-grey:#F3F5F8;
+  --bg-modal:#0F2235;
+}
+
+html {
+  overflow-x: hidden;
+  width: 100%;
+
+  background: var(--white);
+  font-size: 10px;
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+
+
+}
+body {
+  font: 400 1.4rem/1.8rem 'Montserrat', sans-serif;
+
+
+}
+
+
+
+
+html {
+  overflow-x: hidden;
+  width: 100%;
+  background: var(--white);
+  font-size: calc(10vw / 4);
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+
+  @media (min-width: $tab) {
+    font-size: calc(10vw / 8);
+  }
+
+  @media (min-width: $desk) {
+    font-size: calc(10vw / 17.6);
+  }
+
+  @media (min-width: $mDesk) {
+    font-size: 10px;
+  }
+}
+header,section,footer{
+  max-width: 38rem;
+  margin: 0 auto;
+@media (min-width: $tab) {
+  max-width: 76rem;
+}
+  @media (min-width: $desk) {
+    max-width: 172rem;
+  }
+}
+
+
+
+
