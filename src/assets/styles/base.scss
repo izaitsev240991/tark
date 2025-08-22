@@ -22,7 +22,7 @@ html {
   background: var(--white);
   font-size: 10px;
   scroll-behavior: smooth;
-  scrollbar-gutter: stable;
+
 
 
 }
@@ -41,7 +41,7 @@ html {
   background: var(--white);
   font-size: calc(10vw / 4);
   scroll-behavior: smooth;
-  scrollbar-gutter: stable;
+
 
   @media (min-width: $tab) {
     font-size: calc(10vw / 8);

@@ -210,7 +210,7 @@ const writeAgain = () => {
           <div class="footer__agree-check"></div>
           <div>
             <span>Даю согласие</span>
-            <a href="https://turkov.ru/company/processing-data/" target="_blank">на обработку своих персональных данных</a>
+            <a href="https://turkov.ru/company/processing-data/" target="_blank"> на обработку своих персональных данных</a>
           </div>
           <p v-if="errors.agree" class="error-message">Необходимо ваше согласие</p>
         </label>
