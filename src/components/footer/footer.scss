@@ -23,7 +23,7 @@ $link: tg, vk, yt, vc, ok, dz, ru;
     margin: 0 0 4rem;
     grid-area: f1;
     @media (min-width: $tab) {
-      display: inline-block;
+      display: block;
     }
   }
 
@@ -294,6 +294,7 @@ $link: tg, vk, yt, vc, ok, dz, ru;
     @for $i from 1 through list.length($link) {
       a:nth-child(#{$i}):before {
         @include mask(list.nth($link, $i));
+        @include transition;
       }
     }
   }
@@ -376,7 +377,7 @@ $link: tg, vk, yt, vc, ok, dz, ru;
 
       &:focus {
         outline: none;
-        border: 1px solid var(--accent);
+        border: 1px solid var(--white);
         background: var(--grey-light);
         color: var(--dark);
         font-size: 1.4rem;
@@ -394,8 +395,14 @@ $link: tg, vk, yt, vc, ok, dz, ru;
         }
       }
     }
+    & input{
+      height: 5rem;
+    }
+
 & textarea{
   height: 16rem;
+  resize: none;
+  width: 100%;
 }
     & label:nth-child(1) {
       grid-area: a1;

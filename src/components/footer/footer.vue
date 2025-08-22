@@ -1,5 +1,6 @@
 <script setup>
 import { ref, watch } from 'vue'
+import IMask from 'imask'
 
 const currentYear = ref(new Date().getFullYear())
 
@@ -29,12 +30,39 @@ const socials = ref([
   'https://vc.ru/id1547915',
   'https://ok.ru/turkov',
   'https://dzen.ru/turkov?utm_referrer=turkov.ru',
-  'ru'
+  'https://rutube.ru/channel/24967539/'
 ])
 
-const onPhoneInput = (e) => {
-  form.value.phone = (e?.target?.value ?? '').replace(/\D/g, '')
+const vImask = {
+  mounted(el, binding) {
+    const mask = IMask(el, { mask: '+{7} (000) 000-00-00' })
+    el._imask = mask
+
+
+    mask.on('accept', () => {
+      const formatted = mask.value
+      if (binding.instance?.form) {
+        binding.instance.form.phone = formatted
+      }
+    })
+
+
+    if (typeof binding.value === 'string' && binding.value !== mask.value) {
+      mask.value = binding.value
+    }
+  },
+  updated(el, binding) {
+    const mask = el._imask
+    if (mask && binding.value !== mask.value) {
+      mask.value = binding.value ?? ''
+    }
+  },
+  beforeUnmount(el) {
+    el._imask?.destroy()
+    el._imask = undefined
+  }
 }
+
 
 const triedSubmit = ref(false)
 
@@ -106,8 +134,8 @@ const writeAgain = () => {
 
 <template>
   <footer class="footer">
-    <div>
-      <a href="https://turkov.ru/" target="_blank"><img src="./img/logo.svg" alt="logo" class="footer__logo"></a>
+    <div class="footer__logo">
+      <a href="https://turkov.ru/" target="_blank"><img src="./img/logo.svg" alt="logo"</a>
     </div>
 
 
@@ -167,7 +195,7 @@ const writeAgain = () => {
             type="tel"
             @focus="activeField = 'phone'"
             @blur="onBlurHandler('phone')"
-            @input="onPhoneInput"
+            v-imask="form.phone"
             v-model="form.phone"
             class="form__input"
             placeholder=" "
