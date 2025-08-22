@@ -22,6 +22,9 @@ $link: tg, vk, yt, vc, ok, dz, ru;
     display: none;
     margin: 0 0 4rem;
     grid-area: f1;
+    img {
+      display: block;
+    }
     @media (min-width: $tab) {
       display: block;
     }
@@ -371,10 +374,14 @@ $link: tg, vk, yt, vc, ok, dz, ru;
       padding: 1.6rem 1rem 1.6rem 1.2rem;
       box-sizing: border-box;
       width: 100%;
+      color: var(--dark);
+      font-size: 1.4rem;
       background: var(--grey);
       position: relative;
       @include transition;
-
+@media (min-width: $tab) {
+  font-size: 1.8rem;
+}
       &:focus {
         outline: none;
         border: 1px solid var(--white);
@@ -384,7 +391,9 @@ $link: tg, vk, yt, vc, ok, dz, ru;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
-
+        @media (min-width: $tab) {
+          font-size: 1.8rem;
+        }
         & + span {
           top: .3rem;
           font-size: 1rem;
